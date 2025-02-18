@@ -23,11 +23,11 @@ print(my_second_string)
 print(my_third_string)
 
 -- we also have the ability to assign multiple vars on one line
-local mya, myb,myc = 'hi', 'hello'
-print()
-print(mya,myb,myc) -- if an assignment is left out like above, then the extra var is assigned
--- nil
-print()
+-- local mya, myb,myc = 'hi', 'hello'
+-- print()
+-- print(mya,myb,myc) -- if an assignment is left out like above, then the extra var is assigned
+-- -- nil
+-- print()
 
 --[[
     As in other languages we also have lua's escapae sequences
