@@ -36,7 +36,6 @@ function love.update(dt)
 
   Our rectangel will move at the same speed no matter what computer we are on. 🤯🤯🤯🤯🤯
   ]]
-
   x = x + 100 * dt
 end
 
