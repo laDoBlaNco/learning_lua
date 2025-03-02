@@ -20,3 +20,4 @@ Some_function(30)
 
 print(Test)
 -- output 20
+return Test
