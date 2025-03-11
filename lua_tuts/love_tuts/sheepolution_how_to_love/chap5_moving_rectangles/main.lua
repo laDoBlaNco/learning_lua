@@ -9,7 +9,7 @@ to use variables that we can manipulate and give the impression of movement.
 and where do we create our variables? in love.load()
 
 ]]
-
+local x
 function love.load()
   x = 100
 end
