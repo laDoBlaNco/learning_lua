@@ -1,43 +1,33 @@
-local circle, mouse_x, mouse_y, angle,cos,sin
+local circle, mouse_x, mouse_y, angle, cos, sin, get_distance, arrow
 
 love.load = function()
   -- create an table called circle
-  circle = {}
+  arrow = {}
 
   -- give it the properties x,y,radius and speed
-  circle.x = 100
-  circle.y = 100
-  circle.radius = 25
-  circle.speed = 200
+  arrow.x = 200
+  arrow.y = 200
+  arrow.speed = 300
+  arrow.angle = 0
+  arrow.image = love.graphics.newImage('assets/arrow_right.png')
+  arrow.origin_x = arrow.image:getWidth()/2
+  arrow.origin_y = arrow.image:getHeight()/2
 end
 
 love.update = function(dt)
   -- love.mouse.getPosition returns the x and y position of the cursor
   mouse_x, mouse_y = love.mouse.getPosition()
-  angle = math.atan(mouse_y - circle.y, mouse_x - circle.x)
+  arrow.angle = math.atan2(mouse_y - arrow.y, mouse_x - arrow.x)
+  cos = math.cos(arrow.angle)
+  sin = math.sin(arrow.angle)
 
-  cos = math.cos(angle)
-  sin = math.sin(angle)
-
-  -- make the circle move towards the mouse 
-  circle.x=circle.x+circle.speed*cos*dt
-  circle.y=circle.y+circle.speed*sin*dt
+  arrow.x = arrow.x + arrow.speed * cos * dt
+  arrow.y = arrow.y + arrow.speed * sin * dt
 end
 
 love.draw = function()
-  -- draw the circle
-  love.graphics.circle('line', circle.x, circle.y, circle.radius)
-  -- print the angle
-  love.graphics.print("angle: " .. angle, 10, 10)
-
-  -- here are some lines to visualize the velocities
-  love.graphics.line(circle.x,circle.y,mouse_x,circle.y)
-  love.graphics.line(circle.x,circle.y,circle.x,mouse_y)
-
-  -- and the angle
-  love.graphics.line(circle.x,circle.y,mouse_x,mouse_y)
-
-
+  love.graphics.draw(arrow.image, arrow.x, arrow.y, arrow.angle,1,1,arrow.origin_x,arrow.origin_y)
+  love.graphics.circle('fill', mouse_x, mouse_y, 5)
 end
 
 --[[
@@ -47,4 +37,27 @@ object to a target = math.atan(target_y - object_y, target_x - object_x). In thi
 our object and the target being our cursor or mouse.
 
 NOTE: math.atan returns the degree in radiians
+]]
+
+get_distance = function(x1, y1, x2, y2)
+  local horizontal_distance = x1 - x2 -- horizontal side length
+  local vertical_distance = y1 - y2   -- vertical side length
+
+  -- both of these work
+  local a = horizontal_distance * horizontal_distance -- getting the squares of both sides
+  local b = vertical_distance ^ 2
+
+  -- we now sum the squares and then get the squareroot of that
+  local c = a + b
+  local distance = math.sqrt(c)
+  return distance
+end
+
+--[[
+SUMMARY:
+
+I can make an object move at an angle by getting the cosine and sine of the angle. Next I move with the
+x with a speed multiplied by the cosine, and y with the speed multiplied by sine. I can calculate the
+distance between two points using the Pythagorean theorem. When using an image, I need to have it point
+to the right by default and put its origin at the center so its path isn't off.
 ]]
