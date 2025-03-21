@@ -1,0 +1,4 @@
+Hello, Lua! This is a test message written to the file
+File writing in Lua is simple and effective.
+Appending a new line to the file.
+Appending a new line to the file.
