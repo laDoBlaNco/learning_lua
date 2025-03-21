@@ -1,0 +1,2 @@
+-- really nothing here for me to note. pretty basic info on conditionals.
+-- no real learning happening in this section.
