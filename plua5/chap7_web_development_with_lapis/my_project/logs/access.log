@@ -1,0 +1,8 @@
+127.0.0.1 - - [04/Apr/2025:00:06:23 -0400] "GET / HTTP/1.1" 500 3165 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36"
+127.0.0.1 - - [04/Apr/2025:00:06:24 -0400] "GET /favicon.ico HTTP/1.1" 404 561 "http://localhost:8080/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36"
+127.0.0.1 - - [04/Apr/2025:00:06:52 -0400] "GET / HTTP/1.1" 500 3165 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36"
+127.0.0.1 - - [04/Apr/2025:00:08:06 -0400] "GET /hello HTTP/1.1" 200 136 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36"
+127.0.0.1 - - [04/Apr/2025:00:08:16 -0400] "GET / HTTP/1.1" 500 3165 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36"
+127.0.0.1 - - [04/Apr/2025:00:08:36 -0400] "GET /hello HTTP/1.1" 200 136 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36"
+127.0.0.1 - - [04/Apr/2025:00:09:00 -0400] "GET /user/ladoblanco HTTP/1.1" 500 3144 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36"
+127.0.0.1 - - [04/Apr/2025:00:10:53 -0400] "GET /files/something/somethingpath HTTP/1.1" 500 1448 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36"

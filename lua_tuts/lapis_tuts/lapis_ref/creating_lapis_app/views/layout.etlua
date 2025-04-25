@@ -1,0 +1,11 @@
+<!-- views/layout.etlua -->
+<!DOCTYPE HTML>
+<html lang='en'>
+<head>
+    <meta charset='utf-8'>
+    <title><%=page_title or 'My Page'%></title>
+</head>
+<body>
+    <h1>Greetings</h1>
+    <%content_for('inner')%>
+</body>

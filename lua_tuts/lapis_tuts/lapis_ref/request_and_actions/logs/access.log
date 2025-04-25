@@ -1,0 +1,4 @@
+127.0.0.1 - - [04/Apr/2025:22:41:28 -0400] "GET / HTTP/1.1" 500 585 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36"
+127.0.0.1 - - [04/Apr/2025:22:41:29 -0400] "GET /favicon.ico HTTP/1.1" 404 561 "http://localhost:8080/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36"
+127.0.0.1 - - [04/Apr/2025:22:41:43 -0400] "GET / HTTP/1.1" 500 585 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36"
+127.0.0.1 - - [04/Apr/2025:22:42:17 -0400] "GET / HTTP/1.1" 500 585 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36"

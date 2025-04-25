@@ -1,0 +1,3 @@
+2025/04/04 18:09:09 [alert] 87929#87929: lua_code_cache is off; this will hurt performance in /home/ladoblanco/dev/luaH@ck/learning_lua/lua_tuts/lapis_tuts/lapis_ref/getting_started/nginx.conf.compiled:20
+2025/04/04 18:11:39 [alert] 88615#88615: lua_code_cache is off; this will hurt performance in /home/ladoblanco/dev/luaH@ck/learning_lua/lua_tuts/lapis_tuts/lapis_ref/getting_started/nginx.conf.compiled:20
+2025/04/04 18:12:58 [alert] 89004#89004: lua_code_cache is off; this will hurt performance in /home/ladoblanco/dev/luaH@ck/learning_lua/lua_tuts/lapis_tuts/lapis_ref/getting_started/nginx.conf.compiled:20

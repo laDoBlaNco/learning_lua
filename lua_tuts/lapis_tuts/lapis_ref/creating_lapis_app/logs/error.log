@@ -1,0 +1,7 @@
+2025/04/04 18:16:55 [alert] 90168#90168: lua_code_cache is off; this will hurt performance in /home/ladoblanco/dev/luaH@ck/learning_lua/lua_tuts/lapis_tuts/lapis_ref/creating_lapis_app/nginx.conf.compiled:20
+2025/04/04 18:21:27 [alert] 91536#91536: lua_code_cache is off; this will hurt performance in /home/ladoblanco/dev/luaH@ck/learning_lua/lua_tuts/lapis_tuts/lapis_ref/creating_lapis_app/nginx.conf.compiled:20
+2025/04/04 18:22:26 [alert] 91790#91790: lua_code_cache is off; this will hurt performance in /home/ladoblanco/dev/luaH@ck/learning_lua/lua_tuts/lapis_tuts/lapis_ref/creating_lapis_app/nginx.conf.compiled:20
+2025/04/04 18:23:04 [alert] 92051#92051: lua_code_cache is off; this will hurt performance in /home/ladoblanco/dev/luaH@ck/learning_lua/lua_tuts/lapis_tuts/lapis_ref/creating_lapis_app/nginx.conf.compiled:20
+2025/04/04 18:23:24 [alert] 92158#92158: lua_code_cache is off; this will hurt performance in /home/ladoblanco/dev/luaH@ck/learning_lua/lua_tuts/lapis_tuts/lapis_ref/creating_lapis_app/nginx.conf.compiled:20
+2025/04/04 18:36:09 [alert] 94792#94792: lua_code_cache is off; this will hurt performance in /home/ladoblanco/dev/luaH@ck/learning_lua/lua_tuts/lapis_tuts/lapis_ref/creating_lapis_app/nginx.conf.compiled:20
+2025/04/04 18:36:27 [alert] 94944#94944: lua_code_cache is off; this will hurt performance in /home/ladoblanco/dev/luaH@ck/learning_lua/lua_tuts/lapis_tuts/lapis_ref/creating_lapis_app/nginx.conf.compiled:20
