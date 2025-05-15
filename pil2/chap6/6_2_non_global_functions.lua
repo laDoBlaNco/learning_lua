@@ -97,5 +97,16 @@ So I can use the syntax sugar for local recursive functions without worrying
 Of course this trick doesn't work if I have indirect recursive functions. In such cases,
 I must use the  equivalent explicit forward declaration:
 
-  
+  local f,g  -- 'forward' declarations
+
+  function g()
+    <some code>  f()  <some more code>
+  end
+
+  function f ()
+    <some code> g() <some more code>
+  end
+
+Beware not to write local function f in the last definition. Otherwise, lua would create a 
+fresh local variable f, leaving the original f (the one that g is bound to) undefined
 ]]
