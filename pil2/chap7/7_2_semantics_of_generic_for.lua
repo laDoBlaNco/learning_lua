@@ -46,7 +46,40 @@ element of the list can result inmore than one value; and the number of values i
 three, extra values being discarded or nils added as needed. (When we use simple iterators, the
 factory returns only the iterator function, so the invariant and the control variable  get nil)
 
-After this initialization step, the 'for' calls for iterator function with two arguments: The 
-invariant 
+After this initialization step, the 'for' calls for iterator function with two arguments: 
+  ▪ The invariant state
+  ▪ the control variable
+
+(From the standpoint of the 'for' construct, the invariant state has no meaning at all. The 'for'
+only passes the state value from the initialization step to the calls to the iterator function)
+The the 'for' assigns the values returned by the iterator function to the variables declared by its
+variable list. If the first value returned (the one assigned to the control variable) is nil, the
+loop terminates. Otherwise, the 'for' executes its body and calls the iteration function again, 
+repeating the process. 
+
+More precisely, a construction like
+
+  for var_1, ..., var_n in <explist> do <block> end
+
+is equilvaent to the following:
+
+  do
+    local _f, _s, _var = <explist>
+    while true do
+      local var_1, ..., var_n = _f(_s, _var)
+      _var = var_1
+      if _var == nil then break end
+      <block>
+    end
+  end
+
+So as I can see if the iterator function is 'f', the invariant state is 's', and the intial value
+for the control variable is 'a0', the control variable will loop over the values
+  a1 = f(s,a0)
+  a2 = f(s,a1)
+  etc.
+
+and so on, until ai is nil. If the 'for' has other variables, they simply get the extra  values
+returned by each call to our iterator 'f'
 ]]
 
