@@ -40,9 +40,9 @@ print(i)
 --[[
 The 'loadstring' function is powreful; we should use it wisely and with care. it is also an
 exepensive function (when compared to some of the alternatives) and may result in incomprehensible
-code. Before you use it, make sure that there is no simpler way to solve the problem at hand.
+code. Before I use it, make sure that there is no simpler way to solve the problem at hand.
 
-If you want to do a quick-and-dirty 'dostring' (i.e., to load and run a chunk), you can call
+If I want to do a quick-and-dirty 'dostring' (i.e., to load and run a chunk), I can call
 the result from 'loadstring' directly
 
   laodstring(s)()
@@ -79,5 +79,87 @@ g()
 The g function manipulates the local i, as expected, but the f manipulates the global i, since
 'loadstring' always compiles its strings in the global environment.
 
-
+The most typical use of loadstring is to run external code, that is, pieces of code that come
+from outside Ir program. For instance, I may want to plot a function defined by the user;
+the user enters the function and then I use loadstring to evalute it. Note that loadstring
+expects a chunk, that is, statements. If I want to evaluate an expression, I must prefix it
+with return, so that I get a statement that returns the value of the given expression. Below
+an example:
 ]]
+
+--[[
+print "enter your expression:"
+local l = io.read()
+local func = assert(loadstring('return ' .. l))
+print('the value of your expression is ' .. func())
+--]]
+
+-- since the function returned by loadstring is a regular function, I can call it several 
+-- times. 
+--[[
+print "enter function to be plotted (with variable 'x'):"
+local l2 = io.read()
+local f2 = assert(loadstring('return ' .. l2))
+for i=1,20 do
+  x = i -- global 'x' (to be visible from the chunk)
+  print(string.rep('*',f()))
+end
+--]]
+
+--[[
+(the string.rep function replicates a string a given number of times.) If I go deeper, I find 
+out that the real primitive in lua is neither loadfile nor loadstring, but 'load'. Instead of
+reading a chunk from a file, like loadfile, or from a string, like loadstring, 'load' recieves
+a reader function that it calls to get its chunk. The reader function returns the chunk in 
+parts; 'load' calls it until it returns nil, which signals the chunk's end. I'll seldom use 'load';
+its main use is when the chunk is not in a file (e.g., its created dynamically or read from another
+source) and too big to fit comfortably in memory (otherwise I should use loadstring) 
+
+Lua treats any indpendent chunk as the body of an anony function with a variable number of args.
+For instance, loadstring('a=1') returns the equivalent of:
+  function (...) a = 1 end
+
+Like any other function, chunks can declare local variables
+]]
+
+print()
+f = loadstring('local a = 10; print(a + 20)')
+f()
+print()
+
+-- using these features, I can rewrite the plot example to avoid the use of a global var x
+-- just by adding "local x = ...; return" .. l2 
+
+-- The load functions never raise errors. In case of any kind of error, they just return nil
+-- plus an error message.
+print(loadstring('i i'))
+print()
+
+
+--[[
+Moreover, these functions never had any kind of side effect. They only compile the chunk to an
+internal representation and return the result, as an anony function. A common mistake is to assume 
+that loading a chunk defines functions. In Lua, function definitions are assignments; as such
+they are made at runtime, not at compile time. so for example 
+
+    function foo(x)
+      print(x)
+    end
+
+I can then run the command
+
+    f = loadfile('foo.lua')
+
+After that command, foo is compiled, but it isn't defined yet. To define it, I must run the
+chunk
+
+    print(foo) --> nil
+    f()        --> this actually defines 'foo'
+    foo('ok')  --> ok
+
+In a production-quality program that needs to run external code, I should handle any errors
+reported when loading a chunk. Moreover, if the code cannot be trusted, I may want to run
+the new chunk in a protected environment, to avoid unpleasant side effects when running the
+code. 
+]]
+
