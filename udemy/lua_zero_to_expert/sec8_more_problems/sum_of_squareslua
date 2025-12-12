@@ -1,0 +1,17 @@
+--[[
+Section 8 - PROBLEM 2 - SUM OF SQUARES
+
+Write a function in lua that given a natural number n, it prints the result
+of the sum of 1 to n squares
+]]
+
+function sum_of_squares(n)
+  local res = 0
+  for i=1,n do
+    res = res + i^2
+  end
+  print(res)
+end
+
+sum_of_squares(3)
+sum_of_squares(4)

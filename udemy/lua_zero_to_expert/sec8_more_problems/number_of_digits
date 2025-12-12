@@ -1,0 +1,28 @@
+--[[
+SECTION 8 - PROBLEM 3 - NUMBER OF DIGITS
+
+Write a function in lua that receives a number and prints its number of digits
+using algorithm of counting how many times we can divide the number by 10, we get the
+number of digits. The instructore is using math.floor to get to  zero and use 'while temp > 0',
+but in reality I can just use while temp > 1 and get the same. Actually after seeing it through, I
+see why we need to do the math.floor. Since the number can be 0, I can't use 'while temp > 1'
+]]
+
+function digits(n)
+  local count = 0
+  local temp = n
+  if temp == 0 then
+    count = 1
+  else
+    while temp > 0 do
+      temp = math.floor(temp / 10)
+      count = count + 1
+    end
+  end
+  print(string.format("The number of digits of %d is %d", n, count))
+  -- print("The number of digits of " .. n .. " is " .. count .. ".")
+end
+
+digits(7)
+digits(12345)
+digits(0)

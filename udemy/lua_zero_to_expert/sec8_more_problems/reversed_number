@@ -1,0 +1,9 @@
+--[[
+SECTION 8 - PROBLEM 4 - REVERSED NUMBER
+
+Write a function in lua that receives a number n and prints it reversed, with as many zeros
+at its left as it has at its right
+
+
+
+]]
