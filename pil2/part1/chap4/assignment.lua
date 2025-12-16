@@ -1,3 +1,4 @@
+---@diagnostic disable: redundant-value, unbalanced-assignments
 --[[
 Chapter 4 - STATEMENTS
 
