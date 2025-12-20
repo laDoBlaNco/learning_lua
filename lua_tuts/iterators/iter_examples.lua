@@ -183,7 +183,13 @@ end
 for prop,val in get_properties({a_prop='a value',another_prop='another value',Name='Ladoblanco',Anchored=true,a_third_prop='a third value',Transparency=0.5}) do
   print(prop,val)
 end
+print()
 
+-- stateful iterators 🤯🤯🤯
+local test = get_properties({a_prop='a value',another_prop='another value',Name='Ladoblanco',Anchored=true,a_third_prop='a third value',Transparency=0.5})
+print(test())
+print(test())
+print(test())
 
 
 
