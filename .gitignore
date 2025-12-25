@@ -43,3 +43,6 @@ luac.out
 *.lock
 Packages/
 ServerPackages/
+
+# for vscode settings
+.vscode/
