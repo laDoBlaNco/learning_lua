@@ -1,0 +1,5 @@
+--[[
+14.2 - GLOBAL VARIABLE DECLARATIONS
+
+
+]]
