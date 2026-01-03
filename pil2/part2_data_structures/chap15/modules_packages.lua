@@ -57,10 +57,13 @@ The nice thing about these facilities is that they involve no explicit support f
 the language. They use what the language already offers
 ]]
 
-m = require 'mod' -- the first way above  doesn't work for some reason. Not a 
--- biggie. I'll come back to this when I figure out why.
+require 'mod' -- the first way above  doesn't work for some reason. Not a 
+-- biggie. I'll come back to this when I figure out why. -- AFTER READING AHEAD 
+-- I GOT THE FIRST WAY TO WORK. THERE ARE SOME TWEAKS THAT NEED TO BE MADE IN ORDER
+-- FOR LUA TO USE THE FILE NAME AS THE MODNAME AS WELL AS NOT WORRYING ABOUT 
+-- RETURNING THE MODULE IN THE DEFINITION. NOW IT WORKS AS I THOUGHT 🤓
 
-m.foo()
+mod.foo()
 
 
 
