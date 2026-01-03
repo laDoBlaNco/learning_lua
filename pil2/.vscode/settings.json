@@ -5,5 +5,9 @@
     "lowercase-global",
     "deprecated",
     "discard-returns"
+  ],
+  "Lua.diagnostics.globals": [
+    "love",
+    "mod"
   ]
 }
