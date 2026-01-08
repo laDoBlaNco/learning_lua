@@ -10,16 +10,18 @@ them or where they were created.
 
 Objects have their own operations. Tables also can have operations:
 ]]
+--[[
 Account = {balance = 0}
 function Account.withdraw(v)
   Account.balance = Account.balance-v
 end
-
+--]]
 -- This definition creates a new function and stores it in a field 'withdraw' of
 -- Account object. Then we can call it as
+--[[
 Account.withdraw(100.00)
 print(Account.balance)
-
+--]]
 --[[
 This kind of function is ALMOST what we would call a method. However, the use of
 the global name Account inside the function is a bad programming practice. 
