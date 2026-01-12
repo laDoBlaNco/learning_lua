@@ -1,7 +1,7 @@
 --[[
 II - ITERATOR EXAMPLES
 
-Now that we know hwo to properly write iterators, and what they must return, we 
+Now that we know how to properly write iterators, and what they must return, we 
 can write even more iterators!
 
 I'll start by trying to make a replica of 'pairs'. But didn't we already that

@@ -97,7 +97,7 @@ print()
 It is fascinating, but I'm a little doubtful because the author of this tutorial has gotten
 a couple things wrong, or at least they aren't clear, but let's continue. 
 
-If we were to brown what's happening, the factory xpairs2 first returns the stateless
+If we were to breakdown what's happening, the factory xpairs2 first returns the stateless
 iterator and then the invariant which is {1,2,3,4} and the initial control variable 0,
 so {1,2,3,4} and 0 are passed to the iterator. The iterator increments our control var
 and returns it along with the current value and in the next iteration the incremented
@@ -106,7 +106,7 @@ control variable returned from the previous iteration is passed again, which is 
 
 When we said the stateful version of xpairs was a replica of ipairs, that wasn't actually
 true since ipairs returns a stateless iterator just like pairs. The above code is 
-actually how ipairs is written. (But I don't believe that is true. Thsi guy is off 
+actually how ipairs is written. (But I don't believe that is true. This guy is off 
 somewhere)
 
 I'll continue with the tutorial, but something is off. Based on my own investigation I
@@ -116,7 +116,16 @@ seem to return indexes first, not the values, same as my own xpairs2. So what th
 is saying is either very unclear at the moment or just wrong. 
 
 So it might be that ipairs and xpairs2 are written this same way as said, but something
-is still very off for now. 
+is still very off for now. -- COMING BACK AFTER A BIT ITS MORE CLEAR NOW THAT THE 
+DIFFERNCE BETWEEN PAIRS AND IPAIRS IS SIMPLY THE ORDER THE RESULTS (INDEXES OR KEYS)
+ARE RETURNED. BOTH RETURN THE SAME THING AND WORK THE SAME IN THAT FASHION, BUT THE
+DIFFERENCE IS:
+
+  • IPAIRS RETURNS IN ORDER BY INDEX WHICH MUST BE AN INTEGER, OTHERWISE ITS IGNORED
+    ALSO IF THE VALUE IS NIL, THEN IPAIRS QUITS
+  • PAIRS ON THE OTHER HAND RETURNS ITS KEYS (INDEXES) IN ARBITRARY ORDER AND IT DOESN'T
+    CARE IF THEY ARE NUMERIC OR TEXT, OR ANY OTHER TYPE AT ALL, ALSO IF THE VALUE IS 
+    NIL IT'LL JUST GOT TO THE NEXT ONE UNTIL IT REACHES THE LENGTH OF THE TABLE.
 
 string.gmatch for example returns a stateful iterator. How do I know that? Well if
 I printed what it returns I can see it just returns a function and nothing else. 
@@ -208,5 +217,9 @@ print()
 
 -- (well at least they I get the results I'm expecting.)
 
-
+-- So coming back to this some time later, its evident that this guy knows a little bit
+-- and explains what he knows, but what he can't explain he just does 'wavy hands' and
+-- says its magic C code so don't worry about it. Not the greatest tutorial, but it did
+-- help me get to a clearer understanding, if not just forcing me to experiment myself
+-- to really understand what's going on. 
 

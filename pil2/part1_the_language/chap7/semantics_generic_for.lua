@@ -29,21 +29,28 @@ the expression list has only one element, a call to an iterator FACTORY. For exa
   for k,v in pairs(t) do print(k,v) end 
 
 Here the <var-list> is k,v and the <exp-list> is the single element pairs(t) (which is 
-our iterator factory since it creates our iterator). Often the list of variables has only
-one variable too, as in the next example:
+our iterator factory since it creates our iterator). But this could also be:
+
+  for k,v in next,t do print(k,v) end 
+
+Above we our <exp-list> has 2 elements (iterator and invariant state)
+
+Often the list of variables has only one variable too, as in the next example:
 
   for line in io.lines() do
     io.write(line,'\n')
   end
 
 We call the first variable in the <var-list> the CONTROL VARIABLE. Its value is never
-nil during the loop, becasue when it is nil, the loop is done.
+nil during the loop, because when it is nil, the loop is done.
 
 The first thing the for does is to evaluate the expressions after the 'in' in our <exp-list>.
 These expressions should result in the three values kept by for:
   -- the iterator (since the expression is the factory)
-  -- the invariant state (still not sure what this is 🤔)
-  -- the initial value for the control variable.
+  -- the invariant state (still not sure what this is 🤔). YEAH NOW I KNOW ITS PART
+     OF THE OVERALL STATE. STATE IS TWO THINGS. CONTEXT (INVARIANT PART) AND CONTROL
+     VARIABLE (VARIANT PART)
+  -- the initial value for that control variable.
 
 like in a multiple assignment, only the last (or the only) element of the list can
 result in more than one value; and the number of values is adjusted to three, extra
@@ -58,12 +65,12 @@ After this initialization step, the for calls the iterator function with two arg
 
 (from the standpoint of the for construct, the invariant state has no meaning at all. 
 The for only passes the state value from the initialization step to the calls to the
-iterator funtion). Then the for assigns the values returned by the iterator funtion
+iterator funtion). Then the for assigns the values returned by the iterator function
 to the variables declared by its variable list. If the first value returned (the one
 assigned to the control variable) is nil, the loop terminates. Otherwise, the for
 executes its body and calls the iteration function again, repeating the process. 
 
-More precisely, a constrution like
+More precisely, a construction like
 
   for var_1, ..., var_n in <exp_list> do <block> end
 
@@ -83,4 +90,27 @@ So, if our iterator function is f, the invariant state is s and the intiial valu
 for the control variable is a, the control variable will loop over the values changing
 a as it goes, until a is nil. If the for has other variables, they simply get the 
 extra values returned by each call to f.
+]]
+
+--[[ FROM MY DEEP DIVE INTO ITERATORS, PLUGGING THIS ON THE END OF EACH OF THESE FILES
+This helped to concrete the idea of lua iterators in my head with two main points:
+
+  1. when talking about state, we are referring to BOTH the invariant state and the 
+     control variable. Both are state. They need each other to represent the state
+     of our table, for example. tbl is invariant, it doesn't change and doesn't mean 
+     much alone. An index 2 does change when incremented, but again doesn't mean much
+     alone. But tbl[2] now means something.
+
+  2. The difference between iterators is subtle but powerful:
+    • First, how my iterator gets the info needed (stateful vs stateless) 
+      • STATEFUL being that our factory just returns a function that tracks its own state
+        typical in its own universe in closures. Our loop just runs that function and 
+        doesn't worry about anything else as the other expected args (invarint and variant
+        state) are nil
+      • STATELESS being that our factory returns an iterator function that expects its
+        state  as args. Meaning the function doesn't control its  own state, its waiting
+        for someone else to track it and give it, typically our for loop. 
+    • Second, if I need more data variables than the normal 1 or 2 (v or i,v), then we use
+      a complex iterator, which is just packing more info in a table and using that to provide
+      all that data that we need including state.
 ]]

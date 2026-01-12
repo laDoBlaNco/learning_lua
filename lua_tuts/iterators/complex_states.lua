@@ -32,7 +32,7 @@ but we don't wanna do that. This is a mix of statefulness and statelessness in t
 which is ugly. we should be fully on oneside of that line. Fully stateless
 
 What we should remember is that the invariant and control variable arguments that we
-need can be anything, they don't need to be precisely a tble and a number. Using
+need can be anything, they don't need to be precisely a table and a number. Using
 that fact, couldn't we pack the invariant and control variable into one thing, say 
 a dictionary (table)? so its like {inv=t,ctl=0}. This dictionary will be returned  by
 the factory instead of the invariant, and nil is returned instead of the control
@@ -93,8 +93,16 @@ This helped to concrete the idea of lua iterators in my head with two main point
      much alone. An index 2 does change when incremented, but again doesn't mean much
      alone. But tbl[2] now means something.
 
-  2. The difference between iterators is subtle but simple:
-    - how your iterator gets the info needed (stateful vs stateless) 
-    - if we need more data variables than the normal 1 or 2 (v or i,v), then we use
-      a complex iterator. 
+  2. The difference between iterators is subtle but powerful:
+    • First, how my iterator gets the info needed (stateful vs stateless) 
+      • STATEFUL being that our factory just returns a function that tracks its own state
+        typical in its own universe in closures. Our loop just runs that function and 
+        doesn't worry about anything else as the other expected args (invarint and variant
+        state) are nil
+      • STATELESS being that our factory returns an iterator function that expects its
+        state  as args. Meaning the function doesn't control its  own state, its waiting
+        for someone else to track it and give it, typically our for loop. 
+    • Second, if I need more data variables than the normal 1 or 2 (v or i,v), then we use
+      a complex iterator, which is just packing more info in a table and using that to provide
+      all that data that we need including state.
 ]]
