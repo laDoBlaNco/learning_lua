@@ -60,8 +60,20 @@ s = 'a = [=[[[ something ]] ]==] ]=]; print(a)'
 print(s:match(p));print()
 
 --[[
+The first capture is the sequence of equal signs (only one in this example); the second
+is the string content
 
+The third use of captured values is in the replacement string of gsub. like the pattern
+also the replacement string may contain items like '%d', which are changed to the 
+respective captures when the substitution is made. In particular, teh item '%0' is 
+changed to the whole match. (by the way, a '%' in the replacement string must also be
+escaped as '%%') as an example, the following command duplicates every letter in a string,
+with a hyphen between copies:
 ]]
+print(string.gsub('hello lua!','%a','%0-%0'));print()
+
+-- this one interchanges adjacent characters
+print(string.gsub('hello lua!','(.)(.)','%2%1'));print()
 
 
 
