@@ -50,8 +50,21 @@ Some functions in the string library are quite simple:
       • but string.char(97) and string.byte('a') both work as expected
       • Now the interesting is that string.char('97') also works as '97' is converted
         the number first
+
+        NOTE: coming back to this after a couple months I've also discovered something
+        new for me that helps close the gap here. Reaffirming that only strings have
+        its metatable connected to the base type, so that ':' works with the  actual
+        base string. I thought it didn't work with literals and only varaibles, but
+        in actuality we can use it with literals as long as they are in ()s
+        So for my examples above I have the correction that:
+          • while 'a':byte() doesn't work, ('a'):byte() does
+          • so does ('97'):char()
+          • 97:char() and (97):char() still don't work as again the metatable is 
+            connected to the string type and not number. I'll learn how to modify
+            that later if needed.
+
       • With this in mind we can now use ':' with variables. Not n=97, but n='97' and
-        a = 'a'. a:byte() and n:char()
+        a = 'a'. a:byte() and n:char() (OR NOW '97':char() and ('a'):byte())
       • A behavior I wasn't counting on 🤯🤯🤯, both of these functions take more than
         the single 'self' (char or number). 
           • for string.char(97,98,99...) we can use zero or more ints to string together

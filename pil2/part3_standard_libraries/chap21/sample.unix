@@ -1,0 +1,5 @@
+@echo
+cls
+echo Hello World!
+pause
+

@@ -1,0 +1,5 @@
+--[[
+ACCESSING NON-LOCAL VARIABLES
+
+
+]]
